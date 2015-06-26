@@ -5,8 +5,12 @@ get '/' do
   client.search(/./, lang: "en", geocode: "41.884251,-87.632446,300mi").take(10).each do |tweet|
     @chicago_tweets << tweet.text
   end
-  @mood_score = mood_scorer(@chicago_tweets)
-  @mood = Mood.new(location_id: 1, score: @mood_score)
+  @chicago = Location.create(city: "Chicago", state: "Illinois")
+  @mood = Mood.new(location_id: @chicago.id)
+  @mood.score = @mood.mood_scorer(@chicago_tweets)
+  @mood.happy_words = @mood.happy_counter
+  @mood.sad_words = @mood.sad_counter
+  @mood.save
 
 #SF#
   # @sf_tweets = []

@@ -1,4 +1,6 @@
 class Mood < ActiveRecord::Base
+  belongs_to :location
+
   attr_accessor :happy_counter, :sad_counter
 
   def initialize
