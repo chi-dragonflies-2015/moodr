@@ -1,14 +1,15 @@
 
-<ul> <% @tweets.each do |tweet| %>
-  <li> <%=tweet %> </li>
-  <% end %>
-</ul>
+<p> Happy words: <%=@mood.happy_words%>
+</p>
 
 <p> ************************************************************************* </p>
 
 
-<ul> <% @tweets1.each do |tweet| %>
-  <li> <%=tweet %> </li>
-  <% end %>
-</ul>
+<p> Sad words: <%=@mood.sad_words%>
+</p>
 
+<p>
+  ********************************************
+</p>
+
+<p> Score: <%=@mood.score%>
