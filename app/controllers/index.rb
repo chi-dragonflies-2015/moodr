@@ -4,12 +4,10 @@ get '/' do
 end
 
 get '/happy/birthday/Alyssa' do
-   #drop down menu
-  erb :index
+  redirect '/happy/birthday/Alyssa/chicago'
 end
 
 get '/happy/birthday/Alyssa/chicago' do
-
   #Chicago#
   @chicago_tweets = []
   client.search(/./, lang: "en", geocode: "41.884251,-87.632446,300mi").take(200).each do |tweet|
@@ -22,6 +20,7 @@ get '/happy/birthday/Alyssa/chicago' do
   @mood.happy_words = @mood.happy_counter
   @mood.sad_words = @mood.sad_counter
   @mood.save
+  erb :index
 end
 
 get '/happy/birthday/Alyssa/sf' do
@@ -31,12 +30,13 @@ get '/happy/birthday/Alyssa/sf' do
     @sf_tweets << tweet.text
   end
   @sf = Location.find_by(city: "San Francisco")
-  @sf_mood = Mood.new
-  @sf_mood.location_id = @sf.id
-  @sf_mood.score = @sf_mood.mood_scorer(@sf_tweets)
-  @sf_mood.happy_words = @sf_mood.happy_counter
-  @sf_mood.sad_words = @sf_mood.sad_counter
-  @sf_mood.save
+  @mood = Mood.new
+  @mood.location_id = @sf.id
+  @mood.score = @mood.mood_scorer(@sf_tweets)
+  @mood.happy_words = @mood.happy_counter
+  @mood.sad_words = @mood.sad_counter
+  @mood.save
+  erb :index
 end
 
 get '/happy/birthday/Alyssa/ny' do
@@ -46,11 +46,11 @@ get '/happy/birthday/Alyssa/ny' do
     @ny_tweets << tweet.text
   end
   @ny = Location.find_by(city: "New York")
-  @ny_mood = Mood.new
-  @ny_mood.location_id = @ny.id
-  @ny_mood.score = @ny_mood.mood_scorer(@ny_tweets)
-  @ny_mood.happy_words = @ny_mood.happy_counter
-  @ny_mood.sad_words = @ny_mood.sad_counter
-  @ny_mood.save
-
+  @mood = Mood.new
+  @mood.location_id = @ny.id
+  @mood.score = @mood.mood_scorer(@ny_tweets)
+  @mood.happy_words = @mood.happy_counter
+  @mood.sad_words = @mood.sad_counter
+  @mood.save
+    erb :index
 end

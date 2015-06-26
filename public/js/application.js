@@ -1,5 +1,6 @@
-$(document).ready(function() {
-  fireOff(10, 10);
+// $(document).ready(function() {
+  // fireOff(@mood.happy_words, @mood.sad_words);
+
   function fireOff(happy_total, sad_total) {
     var stage = document.getElementById('stage');
     var browserX = window.screenX;
@@ -12,7 +13,7 @@ $(document).ready(function() {
     var mouseX = 0;
     var mouseY = 0;
     var stageWidth = $(document).width();
-    var stageHeight = $(document).height() - 50;
+    var stageHeight = $(document).height() - 100;
     stage.width = stageWidth;
     stage.height = stageHeight;
 
@@ -86,11 +87,14 @@ $(document).ready(function() {
         for(var i = 0; i < sad_total; i++)
         {
           var ball = {};
-          ball.color = "#0000ff"
+          // ball.color = "#0000ff"
+          var img = new Image()
+          img.src="/images/green_frowny.png"
+          ball.image = img;
           ball.bounce = .5 + (Math.random() * .5);
           ball.vx = Math.random() * 50 - 25;
           ball.vy = Math.random() * 50 - 25;
-          ball.size = 30 - (ball.bounce * 25);
+          ball.size = 80 - (ball.bounce * 25);
           ball.x = Math.random() * stageWidth;
           ball.y = Math.random() * stageHeight;
           balls[balls.length] = ball;
@@ -99,11 +103,14 @@ $(document).ready(function() {
         for(var i = 0; i < happy_total; i++)
         {
           var ball = {};
-          ball.color = "#ffff00"
+          // ball.color = "#ffff00"
+          var img = new Image()
+          img.src="/images/smiley-face-thumbs-up.png"
+          ball.image = img;
           ball.bounce = .5 + (Math.random() * .5);
           ball.vx = Math.random() * 50 - 25;
           ball.vy = Math.random() * 50 - 25;
-          ball.size = 30 - (ball.bounce * 25);
+          ball.size = 80 - (ball.bounce * 25);
           ball.x = Math.random() * stageWidth;
           ball.y = Math.random() * stageHeight;
           balls[balls.length] = ball;
@@ -175,11 +182,12 @@ $(document).ready(function() {
         var i = balls.length;
         while(--i > -1)
         {
-          context.fillStyle = balls[i].color;
-          context.beginPath();
-          context.arc(balls[i].x,balls[i].y,balls[i].size,0,Math.PI*2,true);
-          context.closePath();
-          context.fill();
+          context.drawImage(balls[i].image, balls[i].x, balls[i].y)
+          // context.fillStyle = balls[i].color;
+          // context.beginPath();
+          // context.arc(balls[i].x,balls[i].y,balls[i].size,0,Math.PI*2,true);
+          // context.closePath();
+          // context.fill();
         }
       }
 
@@ -187,7 +195,7 @@ $(document).ready(function() {
       {
         collisionCheck();
 
-        var gravity = 2;
+        var gravity = -0.1;
         var drag = .98;
 
         if(ball.dragging)
@@ -255,7 +263,7 @@ $(document).ready(function() {
 
       function collisionCheck()
       {
-        var spring = .5;
+        var spring = .9;
 
         for(var i = 0; i < (total-1); ++i)
         {
@@ -313,7 +321,7 @@ $(document).ready(function() {
           return true;
       }
     };
-});
+// });
 
 
 
