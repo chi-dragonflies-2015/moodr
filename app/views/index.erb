@@ -1,14 +1,15 @@
 
-<ul> <% @tweets.each do |tweet| %>
-  <li> <%=tweet %> </li>
-  <% end %>
-</ul>
 
-<p> ************************************************************************* </p>
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Cities
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="/happy/birthday/Alyssa/chicago">Chicago</a></li>
+      <li><a href="/happy/birthday/Alyssa/sf">San Francisco</a></li>
+      <li><a href="/happy/birthday/Alyssa/ny">New York</a></li>
+    </ul>
+  </div>
 
-
-<ul> <% @tweets1.each do |tweet| %>
-  <li> <%=tweet %> </li>
-  <% end %>
-</ul>
-
+<canvas id="stage" width="1389" height="500">
+      <p>Your browser doesn't support canvas.</p>
+</canvas>
