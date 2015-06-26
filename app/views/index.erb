@@ -1,54 +1,15 @@
-<h1>Chicago!</h1>
-<p> ************************************************************************* </p>
-<p> Happy words: <%=@mood.happy_words%>
-</p>
 
 
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Cities
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="/happy/birthday/Alyssa/chicago">Chicago</a></li>
+      <li><a href="/happy/birthday/Alyssa/sf">San Francisco</a></li>
+      <li><a href="/happy/birthday/Alyssa/ny">New York</a></li>
+    </ul>
+  </div>
 
-<p> Sad words: <%=@mood.sad_words%>
-</p>
-
-<p>
-  ********************************************
-</p>
-
-<p> Score: <%=@mood.score%> </p>
-<br></br>
-
-
-<p> ************************************************************************* </p>
-
-<h1>San Francisco!</h1>
-
-<p> Happy words: <%=@sf_mood.happy_words%>
-</p>
-
-
-<p> Sad words: <%=@sf_mood.sad_words%>
-</p>
-
-<p>
-  ********************************************
-</p>
-
-<p> Score: <%=@sf_mood.score%> </p>
-<br></br>
-
-  <p> ************************************************************************* </p>
-
-<h1>New York!</h1>
-
-<p> Happy words: <%=@ny_mood.happy_words%>
-</p>
-
-
-<p> Sad words: <%=@ny_mood.sad_words%>
-</p>
-
-<p>
-  ********************************************
-</p>
-
-<p> Score: <%=@ny_mood.score%> </p>
-<br></br>
-
+<canvas id="stage" width="1389" height="500">
+   <p>Your browser doesn't support canvas.</p>
+</canvas>
