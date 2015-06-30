@@ -321,7 +321,45 @@
           return true;
       }
     };
+//       d3.selectAll("p").style("color", "white");
+// d3.select("body").selectAll("p").style("background-color", "black");
+
+function pieChart(greatCount, andCount) {
+  $('#container').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'bar'
+            },
+            title: {
+                text: 'Recently Tweeted Words'
+            },
+            tooltip: {
+                pointFormat: '<b>{point.value}</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: "Great v. And",
+                colorByPoint: true,
+                data: [{
+                    name: "Great",
+                    y: greatCount,
+                }, {
+                    name: "And",
+                    y: andCount,
+                }]
+            }]
+        });
+    };
 // });
-
-
 
