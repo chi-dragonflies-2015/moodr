@@ -19,6 +19,7 @@ get '/happy/birthday/Alyssa/chicago' do
   @mood.score = @mood.mood_scorer(@chicago_tweets)
   @mood.happy_words = @mood.happy_counter
   @mood.sad_words = @mood.sad_counter
+  @mood_data = @mood.data_hash
   @mood.save
   erb :index
 end
